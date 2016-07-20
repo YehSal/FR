@@ -12,7 +12,7 @@
           Username
         %th
           Current Score
-      -if @user.is_on_team? == true && @user.score.nil? == false
+      -if @user.is_on_team? == true
         -@all_users.sort_by{|u| u.score }.reverse[0...10].each do |u|
           %tr
             %td
@@ -20,5 +20,6 @@
             %td
               =link_to "#{u.user_name}", profile_path(u.id)
             %td
+              -binding.pry
               =u.score
             %br

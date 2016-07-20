@@ -59,6 +59,7 @@ class GameController < ApplicationController
         @matched_user_char_score = @matched_user_all_params.calculate
         @matched_user.score += @matched_user_char_score
       end
+      @user.save
       @matched_user.save
     end
     # TBI
