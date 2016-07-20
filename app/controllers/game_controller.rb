@@ -1,6 +1,6 @@
 class GameController < ApplicationController
   def index
-    # 
+    #
     # Match current user with another user in the same league unless current
     # user is already matched or no user is available
     @user = current_user
@@ -43,6 +43,7 @@ class GameController < ApplicationController
         if i.show == 'Keeping Up with the Kardashians'
           @show = Show.where(name: 'Keeping Up with the Kardashians')
           @show = @show.first
+          @show.generate
         elsif i.show == 'The Bachelorette'
           @show = Show.where(name: 'The Bachelorette')
           @show = @show.first
@@ -51,14 +52,14 @@ class GameController < ApplicationController
           flash[:alert] = "Show doesn't exist!"
         end
         @all_params = CalculateScore.new(i, @show, @user)
-        @char_score = @all_params.calculate
-        @user.score += @char_score
-        @user.save!
+        # @char_score = @all_params.calculate
+        # @user.score += @char_score
+        # @user.save
         @matched_user_all_params = CalculateScore.new(i, @show, @matched_user)
         @matched_user_char_score = @matched_user_all_params.calculate
         @matched_user.score += @matched_user_char_score
       end
-      @matched_user.save!
+      @matched_user.save
     end
     # TBI
     # Check when user was last matched with another user
