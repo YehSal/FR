@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .controller-sessions {
+
+  text-align: center;
+
   .navbar {
     background-color: #271439;
     border-radius: 0;
@@ -12,7 +15,7 @@
     letter-spacing: 3px;
     border: 0 !important;
     bottom: 20px;
-    min-height: 100px;
+    min-height: 110px;
   }
   .navbar-bottom {
     position: absolute;
