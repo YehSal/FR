@@ -45,7 +45,6 @@
                       =star.score
                   =image_tag(star.image)
     .row4.who_won
-      -binding.pry
       -if @user.score > @matched_user.score
         .won
           %h2
