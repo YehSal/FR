@@ -10,15 +10,15 @@ class CalculateScore
   # calculate the character's score
   def calculate
 
-    @update = UpdateNews.new(@char_params)
-    if ((DateTime.now - 1.day).utc > (@user_params.media_update).utc)
-      @poscount = @update.posupdate * 0.3
-      @negcount = @update.negupdate * 0.3
-      @user_params.media_update = DateTime.now
-    else
-      @poscount = 0;
-      @negcount = 0;
-    end
+    # @update = UpdateNews.new(@char_params)
+    # if ((DateTime.now - 1.day).utc > (@user_params.media_update).utc)
+    #   @poscount = @update.posupdate * 0.3
+    #   @negcount = @update.negupdate * 0.3
+    #   @user_params.media_update = DateTime.now
+    # else
+    #   @poscount = 0;
+    #   @negcount = 0;
+    # end
     # variables to keep the equation dry
     @episodes_ratio = char_params[:episodes]/show_params[:episodes]
     @pop_ratio = (0.2 * show_params[:popularity])
@@ -30,9 +30,11 @@ class CalculateScore
     # binding.pry
 
     if @char_hash[:show] == "Keeping Up with the Kardashians"
-      @char_hash[:score] = @episodes_ratio + @pop_ratio + @vote_ratio + @vote_count + @poscount - @negcount
+      @char_hash[:score] = @episodes_ratio + @pop_ratio + @vote_ratio + @vote_count
+      # + @poscount - @negcount
     elsif @char_hash[:show] == "The Bachelorette"
-      @char_hash[:score] = @episodes_ratio + @pop_ratio + @vote_ratio + @vote_count + @poscount - @negcount
+      @char_hash[:score] = @episodes_ratio + @pop_ratio + @vote_ratio + @vote_count
+      #  + @poscount - @negcount
     else
       flash[:error] = "Show doesn't exist!"
     end

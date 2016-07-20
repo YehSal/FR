@@ -7,13 +7,12 @@ class GameController < ApplicationController
     if @user.is_on_team? == false
       redirect_to new_team_path
     end
-    
+
     @matching = MatchUser.new(@user)
     if @matching.match(@matched_user)
       @matched_user = @matching.match(@matched_user)
       @matched_user_team = @matched_user.teams.last.chars
     end
-
     # If user already picked a team, update their show's score and then
     # calculate the score of each star on the team after resetting their score
     # to zero
