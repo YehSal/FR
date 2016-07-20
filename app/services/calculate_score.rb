@@ -26,14 +26,14 @@ class CalculateScore
     @vote_count = show_params[:vote_count]
     @char_hash = char_params
     @show_hash = show_params
-
+    @episodes_num = char_params[:episodes] * 0.5
     # binding.pry
 
     if @char_hash[:show] == "Keeping Up with the Kardashians"
-      @char_hash[:score] = @episodes_ratio + @pop_ratio + @vote_ratio + @vote_count
+      @char_hash[:score] = @episodes_ratio + @pop_ratio + @vote_ratio + @vote_count + @episodes_num
       # + @poscount - @negcount
     elsif @char_hash[:show] == "The Bachelorette"
-      @char_hash[:score] = @episodes_ratio + @pop_ratio + @vote_ratio + @vote_count
+      @char_hash[:score] = @episodes_ratio + @pop_ratio + @vote_ratio + @vote_count + @episodes_num
       #  + @poscount - @negcount
     else
       flash[:error] = "Show doesn't exist!"

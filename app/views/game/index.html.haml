@@ -8,6 +8,7 @@
     .container
       .row1
         -@current_team.each do |star|
+          -# -binding.pry
           .hover_container
             .span4
               .thumbnail
@@ -17,6 +18,8 @@
                   %p
                     =star.f_name
                     =star.l_name
+                    %br
+                    =star.score
                 =image_tag(star.image)
   .row2_versus_msg
     %h2
