@@ -1,5 +1,6 @@
 class GameController < ApplicationController
   def index
+    # 
     # Match current user with another user in the same league unless current
     # user is already matched or no user is available
     @user = current_user
