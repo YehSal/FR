@@ -1,0 +1,19 @@
+.select_team
+  %h3 Pick 5 stars to be on your team
+  =form_for :select_chars, :url => teams_select_chars_path, :method => :post do |f|
+    .row_stars
+      -@chars.each do |star|
+        %ul{:style => "list-style-type:none"}
+          %li
+            .container.stars_containter
+              .span4
+                .thumbnail
+                  .caption
+                    %h4
+                      =star.show
+                    %p
+                      =star.f_name
+                      =star.l_name
+                      =check_box_tag 'char_ids[]', star.id
+                  =image_tag(star.image)
+    =submit_tag "Select My Cast"

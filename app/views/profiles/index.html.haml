@@ -1,0 +1,35 @@
+%h1 Your Profile
+.container.container_profile
+  %h3 Personal Information
+  Username:
+  =@user[0][:user_name]
+  %br
+  Name:
+  =@user[0][:first_name]
+  =@user[0][:last_name]
+  %br
+
+  %h3 League
+  =@user_league.name
+  %br
+  -if @access_key != nil
+    Access key for
+    =@user_league.name
+    =@access_key
+
+  %h3 Cast
+  .rows
+    -@user_cast.each do |star|
+      .container
+        .span4
+          .thumbnail
+            .caption
+              %h4
+                =star.show
+              %p
+                =star.f_name
+                =star.l_name
+            =image_tag(star.image)
+  %br
+  -if current_user.id == @user[0][:id]
+    =link_to "Edit Profile Information", edit_user_registration_path

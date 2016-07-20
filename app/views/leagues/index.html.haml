@@ -1,0 +1,20 @@
+.container.container_league
+
+  %h1 Leagues
+
+  =form_tag league_leaguesubmit_path, :action => :post do
+    #select_league
+      = select_tag "league_id", options_for_select(@leaguespub)
+    %br
+    #submit_league
+      = submit_tag "Select League"
+    %br
+
+
+  #new_league
+    = link_to "Create new league", leagues_new_path
+  %br
+
+  #join_league
+    = link_to "Join private league", leagues_join_path
+  %br

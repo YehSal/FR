@@ -1,0 +1,46 @@
+// Place all the styles related to the Registrations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.controller-sessions {
+  .navbar {
+    background-color: #271439;
+    border-radius: 0;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-size: 18px;
+    font-weight: 100;
+    letter-spacing: 3px;
+    border: 0 !important;
+    bottom: 20px;
+    min-height: 100px;
+  }
+  .navbar-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+
+  .navbar-brand
+  {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+    margin-top: -45px;
+  }
+
+  ul.nav a:hover {
+    color: #A0A0A0 !important;
+  }
+
+  ul.nav a {
+    color: #F7E7CE !important;
+  }
+
+  .navbar-bottom {
+    margin: 0px;
+    color: #F7E7CE;
+  }
+}

@@ -1,0 +1,91 @@
+// Place all the styles related to the Profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// Profiles styling
+.controller-profiles {
+  .container_profile {
+    margin-bottom: 20px;
+  }
+
+  .navbar {
+    background-color: #271439;
+    border-radius: 0;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-size: 18px;
+    font-weight: 100;
+    letter-spacing: 3px;
+    border: 0 !important;
+    bottom: 20px;
+    min-height: 100px;
+  }
+
+  .navbar-brand
+  {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+    margin-top: -35px;
+  }
+
+  ul.nav a:hover {
+    color: #A0A0A0 !important;
+  }
+
+  ul.nav a {
+    color: #F7E7CE !important;
+  }
+
+
+  h1 {
+    text-align: center;
+  }
+
+  .rows {
+    width: auto;
+    display: flex;
+  }
+
+  .hover_container {
+    flex: 1;
+    display: flex;
+    width: 200px;
+    height: 200px;
+  }
+
+  .span4 {
+  }
+
+  .thumbnail {
+    position: relative;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+  }
+
+  .caption {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(224,224,224,.3);
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+    display: none;
+    text-align: center;
+    color:#fff !important;
+    z-index: 2;
+  }
+
+  .navbar-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0px;
+    color: #F7E7CE;
+  }
+}

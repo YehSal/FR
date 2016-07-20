@@ -1,0 +1,57 @@
+.rows
+  %h1 THIS ROUND
+  .container
+    .row_user_name
+      %h3
+        =@user.user_name
+  -if @user.is_on_team?
+    .container
+      .row1
+        -@current_team.each do |star|
+          .hover_container
+            .span4
+              .thumbnail
+                .caption
+                  %h4
+                    =star.show
+                  %p
+                    =star.f_name
+                    =star.l_name
+                =image_tag(star.image)
+  .row2_versus_msg
+    %h2
+      Vs.
+  -if @matched_user != nil
+    -if @matched_user.is_on_team?
+      .container
+        .row_user_name
+          %h3
+            =@matched_user.user_name
+        .row3
+          -@matched_user_team.each do |star|
+            .hover_container
+              .span4
+                .thumbnail
+                  .caption
+                    %h4
+                      =star.show
+                    %p
+                      =star.f_name
+                      =star.l_name
+                  =image_tag(star.image)
+    .row4.who_won
+      -if @user.score > @matched_user.score
+        .won
+          %h2
+            You Won!
+      -elsif @user.score < @matched_user.score
+        %h2
+          .lost
+            You Lost!
+      -else
+        %h2
+          .tie
+            It's a tie!
+  -else
+    %p
+      Sorry, there are currently no available users in the league. Please come back later

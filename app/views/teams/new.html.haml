@@ -1,0 +1,11 @@
+%h1 Create your team here
+
+=form_for (@team_form) do |i|
+
+  =i.label 'Team Name'
+  =i.text_field :name
+
+  =i.submit
+
+
+-# :url => teams_create_path
