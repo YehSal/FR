@@ -11,7 +11,6 @@ except ImportError:
 
 class ImdbSpider(scrapy.Spider):
     name = "imdb"
-    homepage = 'http://www.imdb.com'
     def start_requests(self):
         urls = [
         'http://www.imdb.com/title/tt0120596/fullcredits',
@@ -20,19 +19,24 @@ class ImdbSpider(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
+        show = ' '.join(response.css("div.parent h3 a::text").extract_first().split())
+
         for actor in response.css('tr.odd'):
-            char = actor.css('td.character a::text').extract_first()
+            char_name = actor.css('td.character a::text').extract_first()
+            homepage = 'http://www.imdb.com'
+
             link = urljoin(
-                "http://www.imdb.com",
+                homepage,
             ' '.join(actor.css('td.primary_photo a::attr(href)').extract_first().split()))
 
-            if char == None:
+            if char_name == None:
                 yield {
                     'real_name':
                     ' '.join(actor.css('td.itemprop a span.itemprop::text').extract_first().split()),
                     'character_name':
                     ' '.join(actor.css('td.character div::text').extract_first().split()),
                     'imdb_link': link,
+                    'show': show,
                 }
             else:
                 yield {
@@ -41,11 +45,12 @@ class ImdbSpider(scrapy.Spider):
                     'character_name':
                     ' '.join(actor.css('td.character a::text').extract_first().split()),
                     'imdb_link': link,
+                    'show': show,
                 }
 
         for actor in response.css('tr.even'):
-            char = actor.css('td.character a::text').extract_first()
-            if char == None:
+            char_name = actor.css('td.character a::text').extract_first()
+            if char_name == None:
                 link = response.urljoin(' '.join(actor.css('td.primary_photo a::attr(href)').extract_first().split()))
                 yield {
                     'real_name':
@@ -53,6 +58,7 @@ class ImdbSpider(scrapy.Spider):
                     'character_name':
                     ' '.join(actor.css('td.character div::text').extract_first().split()),
                     'imdb_link': link,
+                    'show': show,
                 }
             else:
                 yield {
@@ -61,6 +67,7 @@ class ImdbSpider(scrapy.Spider):
                     'character_name':
                     ' '.join(actor.css('td.character a::text').extract_first().split()),
                     'imdb_link': link,
+                    'show': show,
                 }
 
 
