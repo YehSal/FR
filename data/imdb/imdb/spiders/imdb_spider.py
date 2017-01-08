@@ -12,8 +12,13 @@ except ImportError:
 class ImdbSpider(scrapy.Spider):
     name = "imdb"
     def start_requests(self):
+        # Bachelor, KUWTK, Bachelorette, American Idol, Survivor
         urls = [
         'http://www.imdb.com/title/tt0120596/fullcredits',
+        'http://www.imdb.com/title/tt1086761/fullcredits?ref_=tt_cl_sm#cast',
+        'http://www.imdb.com/title/tt0313038/fullcredits?ref_=tt_ov_st_sm',
+        'http://www.imdb.com/title/tt0319931/fullcredits?ref_=tt_cl_sm#cast',
+        'http://www.imdb.com/title/tt0239195/fullcredits?ref_=tt_cl_sm#cast'
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
